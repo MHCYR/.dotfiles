@@ -101,8 +101,11 @@ colorscheme tokyonight
 let mapleader = " "
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 inoremap jk <esc>
+" Completion
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+inoremap <expr> <CR> pumvisible() ? "\<C-n><C-Y>" : "\<CR>"
 "NERDtree
-nmap <Leader>b :NERDTreeToggle<CR>
+nnoremap <Leader>b :NERDTreeToggle<CR>
 " let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
@@ -180,6 +183,6 @@ EOF
 
 " folke/todo-comments {{{
 lua << EOF
-  require("todo-comments").setup {} 
+  require("todo-comments").setup()
 EOF
 " }}}
