@@ -1,0 +1,9 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "html", "jsonc", "json", "javascriptreact", "typescript", "typescriptreact", "typescript.tsx"],
+  "eslint.alwaysShowStatus": true,
+  "eslint.run":"onSave",
+  "prettier.requireConfig": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false
+}
+
