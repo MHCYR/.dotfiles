@@ -80,13 +80,15 @@ Plug 'mattn/emmet-vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " Todo Comments
 Plug 'folke/todo-comments.nvim'
+Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-ts-autotag'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-project.nvim'
 call plug#end()
 
 
 " THEME
 
-" let g:tokyonight_style = 'storm' " available: night, storm
-" let g:tokyonight_enable_italic = 1
 let g:airline_theme = 'deus'
 let g:lightline = {'colorscheme': 'tokyonight'}
 let g:tokyonight_style = 'storm'
@@ -102,8 +104,7 @@ let mapleader = " "
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 inoremap jk <esc>
 " Completion
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-inoremap <expr> <CR> pumvisible() ? "\<C-n><C-Y>" : "\<CR>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "NERDtree
 nnoremap <Leader>b :NERDTreeToggle<CR>
 " let g:NERDTreeShowHidden = 1
@@ -153,6 +154,9 @@ require'nvim-treesitter.configs'.setup {
   context_commentstring = {
     enable = true
   },
+ autotag = {
+    enable = true,
+  }
 }
 EOF
 " }}}
@@ -171,18 +175,32 @@ require("indent_blankline").setup {
 EOF
 " }}}
 
-" JoosepAlviste/nvim-ts-context-commentstring {{{
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  context_commentstring = {
-    enable = true
+" folke/todo-comments {{{
+lua << EOF
+require("todo-comments").setup {
+    -- configs 
   }
-}
 EOF
 " }}}
 
-" folke/todo-comments {{{
 lua << EOF
-  require("todo-comments").setup()
+require("nvim-autopairs").setup {}
 EOF
-" }}}
+
+
+lua << EOF
+require'telescope'.load_extension('project')
+require("telescope").load_extension "file_browser"
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fj",
+  ":Telescope file_browser",
+  { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-p>',
+    ":lua require'telescope'.extensions.project.project{}<CR>",
+    {noremap = true, silent = true}
+)
+EOF
