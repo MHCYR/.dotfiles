@@ -54,8 +54,8 @@ Plug 'lewis6991/gitsigns.nvim'
 " Enable :Git command
 Plug 'tpope/vim-fugitive'
 " Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 " Plug 'itchyny/lightline.vim'
 " code highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -72,6 +72,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'gruvbox-community/gruvbox'
 " Folder navigation
 Plug 'preservim/nerdtree'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Emmet
@@ -80,8 +81,11 @@ Plug 'mattn/emmet-vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " Todo Comments
 Plug 'folke/todo-comments.nvim'
+" auto identation on open brackets
 Plug 'windwp/nvim-autopairs'
+"Auto closing tags
 Plug 'windwp/nvim-ts-autotag'
+" Manage multiple projects
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-project.nvim'
 call plug#end()
@@ -89,8 +93,6 @@ call plug#end()
 
 " THEME
 
-let g:airline_theme = 'deus'
-let g:lightline = {'colorscheme': 'tokyonight'}
 let g:tokyonight_style = 'storm'
 colorscheme tokyonight
 
@@ -103,6 +105,14 @@ colorscheme tokyonight
 let mapleader = " "
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 inoremap jk <esc>
+" These commands will navigate through buffers in order regardless of which mode you are using
+nnoremap <silent><Leader>bn :BufferLineCycleNext<CR>
+nnoremap <silent><Leader>bp :BufferLineCyclePrev<CR>
+
+" These commands will move the current buffer backwards or forwards in the bufferline
+" nnoremap <silent><mymap> :BufferLineMoveNext<CR>
+" nnoremap <silent><mymap> :BufferLineMovePrev<CR>
+
 " Completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "NERDtree
@@ -115,15 +125,11 @@ let NERDTreeShowHidden=1
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Telescope F:NERDTreeFindind files using Telescope command-line sugar.
+" Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-" ALE 
-" Fix files automatically on save
-" let g:ale_fix_on_save = 1
 
 " Airline Theme
 let g:airline_powerline_fonts = 1
@@ -183,20 +189,44 @@ require("todo-comments").setup {
 EOF
 " }}}
 
+" windwp/nvim-autopairs
+" {{{
 lua << EOF
 require("nvim-autopairs").setup {}
 EOF
+" }}}
 
-
+" nvim-telescope/telescope.nvim
+" {{{
 lua << EOF
+require('telescope').setup {
+  pickers = {
+    find_files = {
+      search_dirs = {'./', './components'}
+      }
+  },
+  extensions = {
+    project = {
+      hidden_files = true, -- default: false
+      theme = "dropdown"
+    },
+    file_browser = {
+        -- hidden = true
+      search_dirs = {'./', './components'},
+      respect_gitignore = false
+    }
+  }
+}
 require'telescope'.load_extension('project')
 require("telescope").load_extension "file_browser"
+-- File control
 vim.api.nvim_set_keymap(
   "n",
-  "<space>fj",
-  ":Telescope file_browser",
+  "<space>fc",
+  ":Telescope file_browser<CR>",
   { noremap = true }
 )
+-- Project control
 vim.api.nvim_set_keymap(
     'n',
     '<C-p>',
@@ -204,3 +234,42 @@ vim.api.nvim_set_keymap(
     {noremap = true, silent = true}
 )
 EOF
+" }}}
+
+" kyazdani42/nvim-web-devicons
+" {{{
+lua << EOF
+require'nvim-web-devicons'.setup {
+ -- your personnal icons can go here (to override)
+ -- you can specify color or cterm_color instead of specifying both of them
+ -- DevIcon will be appended to `name`
+ override = {
+  zsh = {
+    icon = "",
+    color = "#428850",
+    cterm_color = "65",
+    name = "Zsh"
+  }
+ };
+ -- globally enable default icons (default to false)
+ -- will get overriden by `get_icons` option
+ default = true;
+}
+EOF
+" }}}
+
+" nvim-lualine/lualine.nvim {{{
+lua << END
+require('lualine').setup()
+END
+" }}}
+
+" akinsho/bufferline.nvim {{{
+lua << EOF
+require("bufferline").setup{
+  options = {
+    separator_style = "slant"
+  }
+}
+EOF
+" }}}
