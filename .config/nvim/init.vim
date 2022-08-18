@@ -11,13 +11,14 @@ set smartindent
 set nu
 set nowrap
 set noswapfile
-set nobackup
+set nobackup " coc issues
+set nowritebackup " coc issues
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set scrolloff=8
 " set noshowmode
-set signcolumn=yes
+set signcolumn=yes "Coc
 set isfname+=@-@
 " set ls=0
 
@@ -56,25 +57,20 @@ Plug 'tpope/vim-fugitive'
 " Status bar
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-" Plug 'itchyny/lightline.vim'
 " code highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " VScode extensions
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "JS lint
-" Plug 'dense-analysis/ale'
-Plug 'eslint/eslint'
-Plug 'sheerun/vim-polyglot'
 " Search files
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Themes
 Plug 'gruvbox-community/gruvbox'
 " Folder navigation
-Plug 'preservim/nerdtree'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'kyazdani42/nvim-tree.lua'
 " Emmet
 Plug 'mattn/emmet-vim'
 " Visualize indent lines
@@ -88,6 +84,7 @@ Plug 'windwp/nvim-ts-autotag'
 " Manage multiple projects
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-project.nvim'
+Plug 'folke/which-key.nvim'
 call plug#end()
 
 
@@ -114,21 +111,20 @@ nnoremap <silent><Leader>bp :BufferLineCyclePrev<CR>
 " nnoremap <silent><mymap> :BufferLineMovePrev<CR>
 
 " Completion
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"NERDtree
-nnoremap <Leader>b :NERDTreeToggle<CR>
-" let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-let NERDTreeShowHidden=1
-" Automaticaly close nvim if NERDTree is only thing left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : '<Tab>'
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+"nvim-tree-lua
+nnoremap <silent><Leader>lt :NvimTreeToggle<CR>
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <C-f> <cmd>Telescope grep_string<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Airline Theme
@@ -139,8 +135,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " gitsigns {{{ 
 lua << EOF
 require('gitsigns').setup {
-  current_line_blame = true
-  }
+current_line_blame = true
+}
 EOF
 " }}}
 
@@ -148,15 +144,15 @@ EOF
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { 'html', 'javascript', 'typescript', 'tsx', 'css', 'json' },
-  -- ensure_installed = "all", -- or maintained
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false
-  },
-  indent = {
-    enable = true
-  },
+ensure_installed = { 'html', 'javascript', 'typescript', 'tsx', 'css', 'json' },
+-- ensure_installed = "all", -- or maintained
+highlight = {
+enable = true,
+additional_vim_regex_highlighting = false
+},
+indent = {
+enable = true
+},
   context_commentstring = {
     enable = true
   },
@@ -202,7 +198,7 @@ lua << EOF
 require('telescope').setup {
   pickers = {
     find_files = {
-      search_dirs = {'./', './components'}
+      search_dirs = {'./', './components'},
       }
   },
   extensions = {
@@ -222,7 +218,7 @@ require("telescope").load_extension "file_browser"
 -- File control
 vim.api.nvim_set_keymap(
   "n",
-  "<space>fc",
+  "<space>fm",
   ":Telescope file_browser<CR>",
   { noremap = true }
 )
@@ -273,3 +269,16 @@ require("bufferline").setup{
 }
 EOF
 " }}}
+
+lua << EOF
+require("nvim-tree").setup()
+EOF
+
+lua << EOF
+  require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
