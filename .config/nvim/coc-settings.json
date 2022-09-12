@@ -1,8 +1,9 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "html", "jsonc", "json", "javascriptreact", "typescript", "typescriptreact", "typescript.tsx"],
+ // "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "html", "jsonc", "json", "javascriptreact", "typescript", "typescriptreact", "typescript.tsx"],
+ "coc.preferences.formatOnSaveFiletypes": ["javascriptreact", "typescript", "typescriptreact", "typescript.tsx"],
   "eslint.alwaysShowStatus": true,
   "suggest.noselect": false,
-  "eslint.run":"onSave",
+ //  "eslint.run":"onSave",
   "prettier.requireConfig": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false

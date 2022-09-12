@@ -3,8 +3,8 @@ set relativenumber
 set nohlsearch
 set hidden
 set noerrorbells
-" set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=4 softtabstop=4
+set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
@@ -103,8 +103,9 @@ let mapleader = " "
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 inoremap jk <esc>
 " These commands will navigate through buffers in order regardless of which mode you are using
-nnoremap <silent><Leader>bn :BufferLineCycleNext<CR>
-nnoremap <silent><Leader>bp :BufferLineCyclePrev<CR>
+nnoremap <silent><Leader>l :BufferLineCycleNext<CR>
+nnoremap <silent><Leader>h :BufferLineCyclePrev<CR>
+nnoremap <silent><Leader>x :bd<CR>
 
 " These commands will move the current buffer backwards or forwards in the bufferline
 " nnoremap <silent><mymap> :BufferLineMoveNext<CR>
@@ -118,7 +119,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 "nvim-tree-lua
-nnoremap <silent><Leader>lt :NvimTreeToggle<CR>
+nnoremap <silent><Leader>b :NvimTreeToggle<CR>
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -126,6 +127,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <C-f> <cmd>Telescope grep_string<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ft <cmd>TodoTelescope<cr>
 
 " Airline Theme
 let g:airline_powerline_fonts = 1
@@ -271,7 +273,11 @@ EOF
 " }}}
 
 lua << EOF
-require("nvim-tree").setup()
+require("nvim-tree").setup {
+  view = {
+    side = "right"
+    }
+  }
 EOF
 
 lua << EOF
