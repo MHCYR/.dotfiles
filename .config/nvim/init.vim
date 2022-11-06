@@ -85,6 +85,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-project.nvim'
 Plug 'folke/which-key.nvim'
+Plug 'phaazon/hop.nvim'
 call plug#end()
 
 
@@ -133,6 +134,10 @@ nnoremap <leader>ft <cmd>TodoTelescope<cr>
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+" Hop
+nnoremap <silent> hw <cmd>HopWord<CR>
+nnoremap <silent> hc <cmd>HopChar2<CR>
 
 " gitsigns {{{ 
 lua << EOF
@@ -288,3 +293,8 @@ lua << EOF
   }
 EOF
 
+" hop {{{
+lua << END
+require('hop').setup()
+END
+" }}}
