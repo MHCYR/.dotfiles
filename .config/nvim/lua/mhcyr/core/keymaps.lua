@@ -50,7 +50,9 @@ keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>") -- find string in 
 keymap.set("n", "<C-f>", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
--- keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>") -- list available help tags
+keymap.set("n", "<space>fm", ":Telescope file_browser<CR>", { noremap = true })
+keymap.set("n", "<C-p>", ":lua require'telescope'.extensions.project.project{}<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>") -- list available help tags
 
 -- trouble
 keymap.set("n", "<leader>lt", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
@@ -58,3 +60,7 @@ keymap.set("n", "<leader>lt", "<cmd>TroubleToggle<cr>", { silent = true, noremap
 -- bufferline
 keymap.set("n", "<leader>bn", "<cmd>BufferLineCycleNext<cr>", { silent = true, noremap = true })
 keymap.set("n", "<leader>bp", "<cmd>BufferLineCyclePrev<cr>", { silent = true, noremap = true })
+
+-- hop
+keymap.set("n", "hw", "<cmd>HopWord<CR>", { silent = true, noremap = true })
+keymap.set("n", "hc", "<cmd>HopChar2<CR>", { silent = true, noremap = true })

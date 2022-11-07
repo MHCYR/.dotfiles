@@ -41,6 +41,9 @@ return packer.startup(function(use)
 	-- essential plugins
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
 	use("tpope/vim-commentary") -- Comment <gcc> uncomment adjacent<gcgc>
+	use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }) -- highlight comments
+	use({ "phaazon/hop.nvim", branch = "v2" }) -- hop motions
+	use("folke/which-key.nvim")
 
 	-- file explorer
 	use("nvim-tree/nvim-tree.lua")
@@ -57,7 +60,8 @@ return packer.startup(function(use)
 	-- fuzzy finding w/ telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
-
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
+	use("nvim-telescope/telescope-project.nvim")
 	-- autocompletion
 	use("hrsh7th/nvim-cmp") -- completion plugin
 	use("hrsh7th/cmp-buffer") -- source for text in buffer

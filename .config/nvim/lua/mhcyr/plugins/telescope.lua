@@ -12,6 +12,22 @@ end
 
 -- configure telescope
 telescope.setup({
+	pickers = {
+		find_files = {
+			search_dirs = { "./", "./components" },
+		},
+	},
+	extensions = {
+		project = {
+			hidden_files = true, -- default: false
+			theme = "dropdown",
+		},
+		file_browser = {
+			-- hidden = true
+			search_dirs = { "./", "./components" },
+			respect_gitignore = false,
+		},
+	},
 	-- configure custom mappings
 	defaults = {
 		mappings = {
@@ -25,3 +41,5 @@ telescope.setup({
 })
 
 telescope.load_extension("fzf")
+telescope.load_extension("file_browser")
+telescope.load_extension("project")
