@@ -7,4 +7,6 @@ require("mhcyr.plugins.lualine")
 require("mhcyr.plugins.telescope")
 require("mhcyr.plugins.nvim-cmp")
 require("mhcyr.plugins.lsp.mason")
-
+require("mhcyr.plugins.lsp.lspsaga")
+require("mhcyr.plugins.lsp.lspconfig")
+require("mhcyr.plugins.lsp.null-ls")
