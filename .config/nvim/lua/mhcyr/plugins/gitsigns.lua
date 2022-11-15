@@ -6,5 +6,5 @@ end
 
 -- configure/enable gitsigns
 gitsigns.setup({
-	curren_line_blame = true,
+	current_line_blame = true,
 })
