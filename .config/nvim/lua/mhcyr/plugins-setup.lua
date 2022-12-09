@@ -44,6 +44,8 @@ return packer.startup(function(use)
 	use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }) -- highlight comments
 	use({ "phaazon/hop.nvim", branch = "v2" }) -- hop motions
 	use("folke/which-key.nvim")
+	use("folke/twilight.nvim")
+	use("folke/zen-mode.nvim")
 
 	-- file explorer
 	use("nvim-tree/nvim-tree.lua")
@@ -101,6 +103,7 @@ return packer.startup(function(use)
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,
 	})
+	use("p00f/nvim-ts-rainbow") -- rainbow parentheses
 
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...

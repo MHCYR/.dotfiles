@@ -64,3 +64,6 @@ keymap.set("n", "<leader>bp", "<cmd>BufferLineCyclePrev<cr>", { silent = true, n
 -- hop
 keymap.set("n", "<leader>hw", "<cmd>HopWord<CR>", { silent = true, noremap = true })
 keymap.set("n", "<leader>hc", "<cmd>HopChar2<CR>", { silent = true, noremap = true })
+
+-- zen mode
+keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>", { silent = true, noremap = true })

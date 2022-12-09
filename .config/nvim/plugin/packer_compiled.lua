@@ -186,6 +186,11 @@ _G.packer_plugins = {
     path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
+  ["nvim-ts-rainbow"] = {
+    loaded = true,
+    path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+    url = "https://github.com/p00f/nvim-ts-rainbow"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -237,6 +242,11 @@ _G.packer_plugins = {
     path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
+  ["twilight.nvim"] = {
+    loaded = true,
+    path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/twilight.nvim",
+    url = "https://github.com/folke/twilight.nvim"
+  },
   ["typescript.nvim"] = {
     loaded = true,
     path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/typescript.nvim",
@@ -276,6 +286,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
+  },
+  ["zen-mode.nvim"] = {
+    loaded = true,
+    path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 
