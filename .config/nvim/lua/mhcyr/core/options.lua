@@ -23,7 +23,6 @@ opt.scrolloff = 10 -- keeps the cursor centered
 
 -- appearance
 opt.cmdheight = 1
-opt.colorcolumn = "80"
 
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)

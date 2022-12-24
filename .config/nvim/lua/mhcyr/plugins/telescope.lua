@@ -15,6 +15,7 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			search_dirs = { "./", "./components" },
+			follow = true, -- follows symlinks
 		},
 	},
 	extensions = {
