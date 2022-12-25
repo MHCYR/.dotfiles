@@ -16,6 +16,21 @@ if not typescript_setup then
 	return
 end
 
+-- import rust-tools plugin safely
+local rust_setup, rt = pcall(require, "rust-tools")
+if not rust_setup then
+	return
+end
+
+local format_sync_grp = vim.api.nvim_create_augroup("Format", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.rs",
+	callback = function()
+		vim.lsp.buf.format({ timeout_ms = 200 })
+	end,
+	group = format_sync_grp,
+})
+
 local keymap = vim.keymap -- for conciseness
 
 -- enable keybinds only for when lsp server available
@@ -42,6 +57,11 @@ local on_attach = function(client, bufnr)
 		keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
 		keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
 		keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
+	end
+	-- rust keymaps
+	if client.name == "rust_analyzer" then
+		keymap.set("n", "<Leader>rr", rt.hover_actions.hover_actions, opts)
+		-- keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, opts)
 	end
 end
 
@@ -104,6 +124,37 @@ lspconfig["sumneko_lua"].setup({
 				library = {
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 					[vim.fn.stdpath("config") .. "/lua"] = true,
+				},
+			},
+		},
+	},
+})
+
+rt.setup({
+	tools = {
+		inlay_hints = {
+			auto = true,
+			only_current_line = true,
+			-- whether to show parameter hints with the inlay hints or not
+			-- default: true
+			show_parameter_hints = false,
+		},
+		on_initialized = function()
+			-- ih.set_all()
+		end,
+		hover_actions = {
+			auto_focus = true,
+		},
+	},
+	server = {
+		on_attach = on_attach,
+		settings = {
+			-- to enable rust-analyzer settings visit:
+			-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+			["rust-analyzer"] = {
+				-- enable clippy on save
+				checkOnSave = {
+					command = "clippy",
 				},
 			},
 		},

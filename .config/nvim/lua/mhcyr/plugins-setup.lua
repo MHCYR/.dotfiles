@@ -91,6 +91,10 @@ return packer.startup(function(use)
 			require("trouble").setup({})
 		end,
 	})
+	use("simrat39/rust-tools.nvim")
+
+	-- debugging
+	use("mfussenegger/nvim-dap")
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
