@@ -130,3 +130,20 @@ source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 #git
 # Pull all repos on a directory 
 alias pullall="find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;"
+
+#nvim 
+alias nv="nvim ."
+
+#Warp Terminal
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+ # POWERLEVEL10K
+
+##### WHAT YOU WANT TO DISABLE FOR WARP - ABOVE
+fi
+
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+eval "$(starship init zsh)"
+fi
