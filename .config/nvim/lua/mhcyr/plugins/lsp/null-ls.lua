@@ -29,6 +29,7 @@ null_ls.setup({
 				return utils.root_has_file(".eslintrc.js", ".eslintrc.json") -- change file extension if you use something else
 			end,
 		}),
+		formatting.black,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

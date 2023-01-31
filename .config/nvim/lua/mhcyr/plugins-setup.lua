@@ -46,6 +46,7 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 	use("folke/twilight.nvim")
 	use("folke/zen-mode.nvim")
+	use("github/copilot.vim")
 
 	-- file explorer
 	use("nvim-tree/nvim-tree.lua")
