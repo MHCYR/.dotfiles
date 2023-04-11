@@ -34,22 +34,58 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim") -- colorscheme
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
-	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
-
 	use("szw/vim-maximizer") -- maximizes and restores current window
 
 	-- essential plugins
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
 	use("tpope/vim-commentary") -- Comment <gcc> uncomment adjacent<gcgc>
 	use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }) -- highlight comments
-	use({ "phaazon/hop.nvim", branch = "v2" }) -- hop motions
 	use("folke/which-key.nvim")
 	use("folke/twilight.nvim")
 	use("folke/zen-mode.nvim")
 	use("github/copilot.vim")
+	use({
+		"glepnir/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("dashboard").setup({
+				theme = "hyper",
+				config = {
+					week_header = {
+						enable = true,
+					},
+					shortcut = {
+						{ desc = " Update", group = "@property", action = "Lazy update", key = "u" },
+						{
+							icon = " ",
+							icon_hl = "@variable",
+							desc = "Files",
+							group = "Label",
+							action = "Telescope find_files",
+							key = "f",
+						},
+						{
+							desc = " Apps",
+							group = "DiagnosticHint",
+							action = "Telescope app",
+							key = "a",
+						},
+						{
+							desc = " dotfiles",
+							group = "Number",
+							action = "Telescope dotfiles",
+							key = "d",
+						},
+					},
+				},
+			})
+		end,
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
 
-	-- file explorer
-	use("nvim-tree/nvim-tree.lua")
+	-- motions
+	use({ "phaazon/hop.nvim", branch = "v2" }) -- hop motions
+	use("ThePrimeagen/harpoon")
 
 	-- vs-code like icons
 	use("kyazdani42/nvim-web-devicons")
@@ -65,6 +101,7 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use("nvim-telescope/telescope-project.nvim")
+
 	-- autocompletion
 	use("hrsh7th/nvim-cmp") -- completion plugin
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
@@ -93,9 +130,6 @@ return packer.startup(function(use)
 		end,
 	})
 	use("simrat39/rust-tools.nvim")
-
-	-- debugging
-	use("mfussenegger/nvim-dap")
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
