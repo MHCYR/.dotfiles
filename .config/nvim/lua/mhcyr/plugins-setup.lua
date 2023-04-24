@@ -31,7 +31,9 @@ return packer.startup(function(use)
 	-- packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	use("folke/tokyonight.nvim") -- colorscheme
+	-- colorscheme
+	use("folke/tokyonight.nvim")
+	use("rmehri01/onenord.nvim")
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	use("szw/vim-maximizer") -- maximizes and restores current window

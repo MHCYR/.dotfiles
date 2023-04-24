@@ -30,6 +30,7 @@ null_ls.setup({
 			end,
 		}),
 		formatting.black,
+		null_ls.builtins.code_actions.gitsigns,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

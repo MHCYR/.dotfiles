@@ -24,9 +24,10 @@ telescope.setup({
 			theme = "dropdown",
 		},
 		file_browser = {
-			-- hidden = true
-			search_dirs = { "./", "./components" },
+			hidden = true,
 			respect_gitignore = false,
+			cwd_to_path = true,
+			hijack_netrw = true,
 		},
 	},
 	-- configure custom mappings
