@@ -25,6 +25,9 @@ local status, packer = pcall(require, "packer")
 if not status then
 	return
 end
+packer.init({
+	max_jobs = 9,
+})
 
 -- add list of plugins to install
 return packer.startup(function(use)
@@ -32,6 +35,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- colorscheme
+
 	use("folke/tokyonight.nvim")
 	use("rmehri01/onenord.nvim")
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
@@ -94,9 +98,6 @@ return packer.startup(function(use)
 
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
-
-	-- buffer line
-	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 
 	-- fuzzy finding w/ telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance

@@ -19,7 +19,7 @@ null_ls.setup({
 		--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 		formatting.prettier.with({ -- js/ts linter
 			condition = function(utils)
-				return utils.root_has_file(".prettierrc", ".prettierrc.cjs", "prettier.config.js") -- change file extension if you use something else
+				return utils.root_has_file(".prettierrc", ".prettierrc.cjs", "prettier.config.js", ".prettierrc.json") -- change file extension if you use something else
 			end,
 		}), -- js/ts formatter
 		formatting.stylua, -- lua formatter
