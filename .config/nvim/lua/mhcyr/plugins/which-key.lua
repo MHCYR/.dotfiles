@@ -1,8 +1,13 @@
--- import whichkey plugin safely
-local setup, whichkey = pcall(require, "which-key")
-if not setup then
-	return
-end
-
--- configure/enable whichkey
-whichkey.setup({})
+return {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 500
+  end,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+}

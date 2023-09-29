@@ -54,24 +54,5 @@ keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>") -- list available help t
 -- trouble
 keymap.set("n", "<leader>lt", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
 
--- bufferline
-keymap.set("n", "<leader>bn", "<cmd>BufferLineCycleNext<cr>", { silent = true, noremap = true })
-keymap.set("n", "<leader>bp", "<cmd>BufferLineCyclePrev<cr>", { silent = true, noremap = true })
-
--- hop
-keymap.set("n", "<leader>hw", "<cmd>HopWord<CR>", { silent = true, noremap = true })
-keymap.set("n", "<leader>hc", "<cmd>HopChar2<CR>", { silent = true, noremap = true })
-
 -- zen mode
 keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>", { silent = true, noremap = true })
-
--- harpoon
-keymap.set(
-	"n",
-	"<leader>hm",
-	"<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>",
-	{ silent = true, noremap = true }
-)
-keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<CR>", { silent = true, noremap = true })
-keymap.set("n", "<C-j>", "<cmd>lua require('harpoon.ui').nav_next()<CR>", { silent = true, noremap = true })
-keymap.set("n", "<C-k>", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", { silent = true, noremap = true })
