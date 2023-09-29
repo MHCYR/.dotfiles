@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/Mohacyr/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -110,7 +105,7 @@ _G.packer_plugins = {
     url = "https://github.com/github/copilot.vim"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n�\3\0\0\6\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\5\0005\5\a\0>\5\1\0045\5\b\0>\5\2\0045\5\t\0>\5\3\0045\5\n\0>\5\4\4=\4\v\3=\3\f\2B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\4\tdesc\17 dotfiles\vaction\23Telescope dotfiles\ngroup\vNumber\bkey\6d\1\0\4\tdesc\r Apps\vaction\18Telescope app\ngroup\19DiagnosticHint\bkey\6a\1\0\6\vaction\25Telescope find_files\ngroup\nLabel\ficon_hl\14@variable\tdesc\nFiles\ticon\t \bkey\6f\1\0\4\tdesc\15 Update\vaction\16Lazy update\ngroup\14@property\bkey\6u\16week_header\1\0\0\1\0\1\venable\2\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\n�\3\0\0\6\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\5\0005\5\a\0>\5\1\0045\5\b\0>\5\2\0045\5\t\0>\5\3\0045\5\n\0>\5\4\4=\4\v\3=\3\f\2B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\4\vaction\23Telescope dotfiles\ngroup\vNumber\tdesc\17 dotfiles\bkey\6d\1\0\4\vaction\18Telescope app\ngroup\19DiagnosticHint\tdesc\r Apps\bkey\6a\1\0\6\ngroup\nLabel\ticon\t \tdesc\nFiles\bkey\6f\vaction\25Telescope find_files\ficon_hl\14@variable\1\0\4\vaction\16Lazy update\ngroup\14@property\tdesc\15 Update\bkey\6u\16week_header\1\0\0\1\0\1\venable\2\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
