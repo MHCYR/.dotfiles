@@ -33,26 +33,3 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 keymap.set("n", "<leader>bx", ":bd<CR>", { noremap = true })
-
-----------------------
--- Plugin Keybinds
-----------------------
-
--- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
-
--- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-keymap.set("n", "<C-f>", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-keymap.set("n", "<space>fm", ":Telescope file_browser<CR>", { noremap = true })
-keymap.set("n", "<C-p>", ":lua require'telescope'.extensions.project.project{}<CR>", { noremap = true, silent = true })
-keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>") -- list available help tags
-
--- trouble
-keymap.set("n", "<leader>lt", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
-
--- zen mode
-keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>", { silent = true, noremap = true })
