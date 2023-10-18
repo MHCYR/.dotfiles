@@ -82,7 +82,7 @@ return {
 			on_attach = on_attach,
 		})
 
-		require("lspconfig")["eslint"].setup({
+		lspconfig["eslint"].setup({
 			capabilities = capabilities,
 		})
 
@@ -163,4 +163,3 @@ return {
 		})
 	end,
 }
-
