@@ -34,7 +34,9 @@ keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 keymap.set("n", "<leader>bx", ":bd<CR>", { noremap = true })
 
--- Copilot
--- vim.g.copilot_assume_mapped = true
--- keymap.set("i", "<Right>", 'copilot#Accept(" ")', { expr = true })
--- vim.g.copilot_no_tab_map = true
+-- DAP
+keymap.set("n", "<leader>dc", ":lua require'dap'.continue()<CR>")
+keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
+keymap.set("n", "<leader>dn", ":lua require'dap'.step_over()<CR>")
+keymap.set("n", "<leader>di", ":lua require'dap'.step_into()<CR>")
+keymap.set("n", "<leader>do", ":lua require'dap'.step_out()<CR>")
