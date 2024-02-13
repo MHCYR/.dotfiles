@@ -12,6 +12,5 @@ return {
 		local keymap = vim.keymap -- for conciseness
 		keymap.set("n", "<leader>G", "<cmd>Neogit<CR>", { silent = true, noremap = true })
 		keymap.set("n", "<leader>gf", "<cmd>Neogit cwd=%:p:h<CR>", { silent = true, noremap = true })
-		keymap.set("n", "<leader>gc", "<cmd>Neogit commit<CR>", { silent = true, noremap = true })
 	end,
 }
